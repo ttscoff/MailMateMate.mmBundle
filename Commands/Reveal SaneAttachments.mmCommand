@@ -1,0 +1,8 @@
+{
+	name          = 'Reveal SaneAttachments';
+	environment   = 'MM_SENDER=${from}\n';
+	input         = "canonical";
+	command       = '#!/bin/bash\n"${MM_BUNDLE_SUPPORT}/bin/open_dropbox"';
+	keyEquivalent = "@y";
+	uuid          = 'CFF4FECE-E021-11E7-AA42-72000629A420';
+}

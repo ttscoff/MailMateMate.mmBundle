@@ -1,0 +1,21 @@
+#!/System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/ruby -wKU
+
+content = $stdin.read.force_encoding('utf-8')
+
+if content =~ /Dropbox\/SaneBox\/(\S+.*)\//
+  sender = $1
+  path = "#{ENV['HOME']}/Dropbox/SaneBox/#{sender}"
+  files = content.scan(/(?i)^(.*?)(?=\n\s+https:\/\/www.dropbox)/)
+  file_arr = []
+  files.each {|f|
+    posix = File.join(path,f[0].strip)
+    file_arr.push(%Q{(POSIX file "#{posix}")})
+  }
+  path = "{" + file_arr.join(',') + "}"
+  %x{echo "#{path}" | pbcopy}
+  begin
+    %x{osascript -e 'tell application "Finder"' -e 'activate' -e 'select #{path}' -e 'end tell'}
+  rescue
+    %x{osascript -e 'tell application "Finder" to display dialog "Failed to open #{path}"'}
+  end
+end

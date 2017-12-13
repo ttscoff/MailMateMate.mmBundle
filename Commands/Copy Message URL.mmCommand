@@ -2,6 +2,6 @@
 	name          = 'Copy Message URL';
 	environment   = 'MM_MESSAGE_ID=${message-id.split}\n';
 	command       = '#!/bin/bash\n"${MM_BUNDLE_SUPPORT}/bin/copy_url"';
-	keyEquivalent = "@~c";
+	keyEquivalent = "@y";
 	uuid          = '9EDA249E-8C33-4A5B-8EC5-6C6F134DA6C8';
 }

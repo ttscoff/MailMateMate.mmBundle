@@ -1,6 +1,5 @@
-#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -wKU
+#!/System/Library/Frameworks/Ruby.framework/Versions/Current/usr/bin/ruby -wKU
 require 'cgi'
-require 'shellwords'
 
 unless ENV['MM_MESSAGE_ID'].nil?
 	msg_url = "message://%3c" + CGI.escape(ENV['MM_MESSAGE_ID']) + "%3e"
